@@ -248,6 +248,12 @@
         }
     }
 }
+-(void) incrementOneBadge{
+    NSInteger numberOfBadges = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    numberOfBadges +=1;
+
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:numberOfBadges];
+}
 
 - (void)setApplicationIconBadgeNumber:(CDVInvokedUrlCommand *)command {
 
