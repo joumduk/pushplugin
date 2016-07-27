@@ -248,12 +248,6 @@
         }
     }
 }
--(void) incrementOneBadge{
-    NSInteger numberOfBadges = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    numberOfBadges +=1;
-
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:numberOfBadges];
-}
 
 - (void)setApplicationIconBadgeNumber:(CDVInvokedUrlCommand *)command {
 
@@ -261,10 +255,12 @@
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
     int badge = [[options objectForKey:@"badge"] intValue] ?: 0;
+    NSInteger numberOfBadges = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    numberOfBadges +=1;
 
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
-
-    [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", badge]];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:numberOfBadges];
+    
+    [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", numberOfBadges]];
 }
 -(void)successWithMessage:(NSString *)message
 {
