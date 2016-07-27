@@ -250,17 +250,14 @@
 }
 
 - (void)setApplicationIconBadgeNumber:(CDVInvokedUrlCommand *)command {
-
     self.callbackId = command.callbackId;
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
     int badge = [[options objectForKey:@"badge"] intValue] ?: 0;
-    NSInteger numberOfBadges = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    numberOfBadges +=1;
 
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:numberOfBadges];
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
     
-    [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", numberOfBadges]];
+    [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", badge]];
 }
 -(void)successWithMessage:(NSString *)message
 {
