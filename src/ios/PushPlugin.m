@@ -254,8 +254,8 @@
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
     int badge = [[options objectForKey:@"badge"] intValue] ?: 0;
-
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 10;
     
     [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", badge]];
 }
